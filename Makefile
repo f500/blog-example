@@ -29,6 +29,11 @@ php:
 composer:
 	@${PHP_RUN} composer $(ARGS) --ansi
 
+## console:	Runs bin/console through docker
+.PHONY: console
+console:
+	@${PHP_RUN} php bin/console $(ARGS) --ansi
+
 ## branch:	Checkout trunk, get most recent version, create new branch based on trunk
 .PHONY: branch
 branch:
