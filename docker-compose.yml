@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+  php-cli:
+    build: docker/php-cli
+    environment:
+      COMPOSER_HOME: "/opt/project/var/cache/.composer"
+      PHP_IDE_CONFIG: "serverName=localhost"
+    volumes:
+      - ./:/opt/project
