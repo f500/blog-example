@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  webserver:
+    build: docker/nginx
+    depends_on:
+      - php-fpm
+    volumes:
+      - ./:/opt/project
+    ports:
+      - "8018:80"
+
+  php-fpm:
+    build: docker/php-fpm
+    environment:
+      COMPOSER_HOME: "/opt/project/var/cache/.composer"
+      PHP_IDE_CONFIG: "serverName=localhost"
+    volumes:
+      - ./:/opt/project
+
+  php-cli:
+    build: docker/php-cli
+    environment:
+      COMPOSER_HOME: "/opt/project/var/cache/.composer"
+      PHP_IDE_CONFIG: "serverName=localhost"
+    volumes:
+      - ./:/opt/project
